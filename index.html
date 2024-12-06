@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <style>
+        .parent{
+            /* border: 2px solid; */
+            background-color: lightgrey;
+            height: 250px;
+            width: 200px;
+            padding: 20px;
+            margin: 20px;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+        }
+        .c1{
+            /* border: 2px solid; */
+            padding: 10px;
+            height: 150px;
+            width: 150px;
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+            
+        }
+        .btn{
+            border: 1px solid black;
+            height: 20px;
+            width: 25px;
+            box-shadow: 2px 2px 2px ;
+        }
+        .btn:hover{
+            cursor: pointer;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <h1>Calculator</h1>
+
+        <form action="" id="frm" onsubmit="evaluation(event)">
+            <input type="text" id="ip1">
+            
+            <div class="c1">
+                <div><input class="btn" type="button" value="%" onclick="input(event)"></div>
+                <div><input class="btn" type="button" value="/" onclick="input(event)"></div>
+                <div><input class="btn" type="button" value="**" onclick="input(event)"></div>
+                <div><input class="btn" type="button" value="C" onclick="clearInput(event)"></div>
+                <div><input class="btn" type="button" value="9" onclick="input(event)"></div>
+                <div><input class="btn" type="button" value="8" onclick="input(event)"></div>
+                <div><input class="btn" type="button" value="7" onclick="input(event)"></div>
+                <div><input class="btn" type="button" value="*" onclick="input(event)"></div>
+                <div><input class="btn" type="button" value="6" onclick="input(event)"></div>
+                <div><input class="btn" type="button" value="5" onclick="input(event)"></div>
+                <div><input class="btn" type="button" value="4" onclick="input(event)"></div>
+                <div><input class="btn" type="button" value="-" onclick="input(event)"></div>
+                <div><input class="btn" type="button" value="3" onclick="input(event)"></div>
+                <div><input class="btn" type="button" value="2" onclick="input(event)"></div>
+                <div><input class="btn" type="button" value="1" onclick="input(event)"></div>
+                <div><input class="btn" type="button" value="+" onclick="input(event)"></div>
+                <div><input class="btn" type="button" value="." onclick="input(event)"></div>
+                <div><input class="btn" type="button" value="0" onclick="input(event)"></div>
+                <div><input class="btn" type="button" value="00" onclick="input(event)"></div>
+                <div><input class="btn" type="submit" value="="></div>
+
+            </div>
+        </form>
+    </div>
+
+    <script>
+        let form = document.getElementById("frm");
+        let ip1 = document.getElementById("ip1");
+        
+        function input(event){
+            ip1.value += event.target.value;
+        }
+
+        // function clear(event) {
+        //     event.preventDefault(); // Prevent form submission
+        //     ip1.value = "";         // Clear the input field
+        // }
+
+        function clearInput(event) {
+            console.log("Clear function triggered");
+            let ip1 = document.getElementById("ip1");
+            if (ip1) {
+                console.log("Input field found");
+                ip1.value = ""; // Clear input
+            } else {
+                console.error("Input field not found!");
+            }
+        }
+
+
+        
+        function evaluation(event) {
+            event.preventDefault(); // Prevent form submission
+            try {
+                ip1.value = eval(ip1.value);
+            } catch (error) {
+                ip1.value = "Error!";
+            }
+        }
+        
+
+        
+
+
+
+
+    </script>
+
+
+
+    
+</body>
+</html>
